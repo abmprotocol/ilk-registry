@@ -8,7 +8,7 @@ import {Vat}     from 'dss/vat.sol';
 import {End}     from 'dss/end.sol';
 import {Vow}     from 'dss/vow.sol';
 import {Cat}     from 'dss/cat.sol';
-import {Dai}     from 'dss/dai.sol';
+import {dotBtc}     from 'dss/dai.sol';
 import {Spotter} from 'dss/spot.sol';
 import {PipLike} from 'dss/spot.sol';
 import {Flipper} from 'dss/flip.sol';
@@ -16,7 +16,7 @@ import {Flapper} from 'dss/flap.sol';
 import {Flopper} from 'dss/flop.sol';
 import {GemJoin} from 'dss/join.sol';
 
-import "./fixtures/UnDai.sol";
+import "./fixtures/UndotBtc.sol";
 import "./IlkRegistry.sol";
 
 interface Hevm {
@@ -124,7 +124,7 @@ contract DssIlkRegistryTest is DSTest {
     }
 
     function initStandardCollateral(bytes32 name) internal returns (Ilk memory) {
-        Dai coin = new Dai(1);
+        dotBtc coin = new dotBtc(1);
         coin.mint(address(this), 20 ether);
 
         vat.init(name);
@@ -150,7 +150,7 @@ contract DssIlkRegistryTest is DSTest {
     }
 
     function initMissingCollateral(bytes32 name) internal returns (Ilk memory) {
-        UnDai coin = new UnDai(1);
+        UndotBtc coin = new UndotBtc(1);
         coin.mint(address(this), 20 ether);
 
         vat.init(name);
